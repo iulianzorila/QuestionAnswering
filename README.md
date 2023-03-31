@@ -27,11 +27,16 @@ significantly heavier in terms of paramaters (Encoder: 82,118,400 | Decoder: 96,
 2 hours.
 
 ## Evaluation
-The models were evaluate using the 
+The models were evaluated using the 
 <a href="https://github.com/allenai/allennlp-models/blob/b1f372248c17ad12684d344955fbcd98e957e77e/allennlp_models/rc/tools/squad.py">SQUAD-F1 metric</a>:
-*  Bert-tiny reached
-    * Without history: 0.1842 Test set - 0.1822 Validation set
-    * With history: &emsp;&nbsp;    0.1914 Test set - 0.1842 Validation set
-*  DistilRoBERTa base (Yet to be evaluated)
+*  Bert-tiny reached:
+    * Without history: 0.1843 Test set - 0.1823 Validation set
+    * With history: &emsp;&nbsp;    **0.1915** Test set - 0.1848 Validation set
+*  DistilRoBERTa base reached:
+    * Without history: 0.4596 Test set - 0.4472 Validation set
+    * With history: &emsp;&nbsp;    **0.5105** Test set - 0.4918 Validation set
 
-Wherby history includes the last 3 conversations (i.e. 3 question/answer pairs).
+Whereby history includes the last 3 conversations (i.e. 3 question/answer pairs).
+
+## Conclusions
+Despite the models being inadequate for Seq2Seq generation, as they are designed to work better as encoders, rather than decoders, we still obtained acceptable results with DistilRoBERTa, although we fine-tuned only for 3 epochs.
